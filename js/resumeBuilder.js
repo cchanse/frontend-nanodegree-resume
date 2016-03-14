@@ -1,3 +1,199 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+
+var bio = {
+    "name" : "Catherine Chanse",
+    "role" : "Frontend Developer",
+    "contacts" : {
+        "mobile": "415-432-0357",
+        "email": "cchanse@gmail.com",
+        "github" : "https://github.com/cchanse",
+        "twitter" : "@cchanse",
+        "location" : "XYZ Sacramento Street",
+    },
+    "welcomeMessage": "As senior frontend developer, I currently work on the public website for the Federal Reserve Bank of San Francisco, supporting the communications efforts around its research, community development, education, and financial oversight and regulation work.",
+    "skills" : [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP"
+    ],
+    "biopic": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/3/000/1e9/1b3/30445ad.jpg",
+    "display": function() {
+        var formattedName = HTMLheaderName.replace("%data%", bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+        var formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
+
+        $("#header").prepend(formattedbioPic);
+
+        // $("#header").prepend(formattedMobile);
+        // $("#header").prepend(formattedEmail);
+        // $("#header").prepend(formattedGithub);
+        // $("#header").prepend(formattedTwitter);
+
+        $("#header").prepend(formattedRole);
+        $("#header").prepend(formattedName);
+        $("#header").append(bio.welcomeMessage);
+
+        $("#topContacts").append(formattedMobile);
+        $("#topContacts").append(formattedEmail);
+        $("#topContacts").append(formattedGithub);
+        $("#topContacts").append(formattedTwitter);
+
+        $("#header").append(HTMLskillsStart);
+
+
+        if (bio.skills.length > 0 ) {
+            for (skill in bio.skills) {
+                var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+                $("#skills").append(formattedSkill);
+            }
+        }
+    }
+}
+
+
+var education = {
+    "schools" : [
+        {
+            "name": "Brown University",
+            "location": "Providence, Rhode Island",
+            "degree": "BA",
+            "majors": "Sociology",
+            "dates": "",
+            "url": "http://brown.edu"
+        },
+        {
+            "name": "California State University, East Bay",
+            "location": "Hayward, CA",
+            "degree": "Masters",
+            "major": "Multimedia",
+            "dates": "",
+            "url": "www.brown.edu"
+        }
+
+    ],
+    "onlineCourses" : [ //onlineCourses: array with - but should this be array containing objects?
+        {
+            "title": "Frontend Developer",
+            "school": "Udacity",
+            "date": 2016,
+            "url": "udacity.com"
+        }
+    ],
+    "display": function() {
+
+        //identify the length of the school array and then go through and replace and append
+        for (school in education.schools) {
+            $("#education").append(HTMLschoolStart);
+            // console.log(education.schools[school].name);
+            var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+            var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+            var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+            var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            // var formattedschoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
+
+            $(".education-entry:last").append(formattedschoolName);
+            $(".education-entry:last").append(formattedschoolLocation);
+            $(".education-entry:last").append(formattedschoolDegree);
+            $(".education-entry:last").append(formattedschoolMajor);
+            $(".education-entry:last").append(formattedschoolDates);
+            // $(".education-entry:last").append(formattedschoolUrl);
+
+        };
+
+    }
+}
+
+var work = {
+    "jobs" : [
+        {
+            "employer": "Federal Reserve Bank of SF",
+            "title": "Frontend Developer",
+            "location": "San Francisco, CA",
+            "dates" : "2012-2014",
+            "description": "Work on cross functional team"
+
+        },
+        {
+            "employer": "Bay Area Video Coalition",
+            "title": "Instructor",
+            "location": "San Francisco, CA",
+            "dates" : "",
+            "description": ""
+        }
+
+
+    ],
+    "display": function() {
+            for (job in work.jobs) {
+
+                //create new div for work experience
+                $("#workExperience").append(HTMLworkStart);
+
+                //concat employer and title
+                var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+                var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+                var formattedEmployerTitle = formattedEmployer + formattedTitle;
+                $(".work-entry:last").append(formattedEmployerTitle);
+
+                var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+                $(".work-entry:last").append(formattedDates);
+
+                var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+                $(".work-entry:last").append(formattedDescription);
+            }
+
+    }
+}
+
+var projects = {
+    "projects" : [
+        {
+            "title": "FRBSF Redesign",
+            "dates": "January 2015-July 2015",
+            "description": "",
+            "images": [
+                    "images/super-stars-literacy.jpg"
+                ]
+        }
+    ],
+    "display" : function() {
+        for (project in projects.projects) {
+
+            $("#projects").append(HTMLprojectStart);
+
+            // console.log(projects.projects[project]);
+            var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+
+            var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+
+            var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+
+            $(".project-entry:last").append(formattedTitle);
+
+            if (projects.projects[project].images.length > 0 ) {
+                for (image in projects.projects[project].images) {
+                    var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                    $("#project-entry:last").append(formattedImage);
+                }
+            }
+            }
+        }
+}
+
+
+
+bio.display();
+education.display();
+work.display();
+projects.display();
+
+//line to add Google map to project
+$("#mapDiv").append(googleMap);
