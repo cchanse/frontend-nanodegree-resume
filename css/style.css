@@ -37,6 +37,10 @@ h2 {
     max-width: 600px;
 }
 
+.project-entry img {
+    padding: 1em 0;
+}
+
 h1 {
     /* color: #3e98c3; */
     font-size: 3rem;

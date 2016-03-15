@@ -161,11 +161,19 @@ var work = {
 var projects = {
     "projects" : [
         {
-            "title": "FRBSF Redesign",
-            "dates": "January 2015-July 2015",
-            "description": "",
+            "title": "Super Stars Literacy",
+            "dates": "2014",
+            "description": "Redesign through Taproot Project",
             "images": [
                     "images/super-stars-literacy.jpg"
+                ]
+        },
+        {
+            "title": "CRA Tool",
+            "dates": "2014",
+            "description": "Used Angular to filter information",
+            "images": [
+                    "images/cra-tool.jpg"
                 ]
         }
     ],
@@ -174,7 +182,6 @@ var projects = {
 
             $("#projects").append(HTMLprojectStart);
 
-            // console.log(projects.projects[project]);
             var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 
             var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
@@ -182,11 +189,15 @@ var projects = {
             var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
 
             $(".project-entry:last").append(formattedTitle);
+            $(".project-entry:last").append(formattedDates);
+            $(".project-entry:last").append(formattedDescription);
+
+
 
             if (projects.projects[project].images.length > 0 ) {
                 for (image in projects.projects[project].images) {
                     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-                    $("#project-entry:last").append(formattedImage);
+                    $(".project-entry:last").append(formattedImage);
                 }
             }
             }
