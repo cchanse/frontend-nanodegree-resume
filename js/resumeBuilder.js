@@ -12,7 +12,7 @@ var bio = {
         "twitter" : "@cchanse",
         "location" : "XYZ Sacramento Street",
     },
-    "welcomeMessage": "As senior frontend developer, I currently work on the public website for the Federal Reserve Bank of San Francisco, supporting the communications efforts around its research, community development, education, and financial oversight and regulation work.",
+    "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "skills" : [
         "HTML",
         "CSS",
@@ -23,6 +23,7 @@ var bio = {
     "display": function() {
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
         var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
         var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
         var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
@@ -38,7 +39,7 @@ var bio = {
 
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
-        $("#header").append(bio.welcomeMessage);
+        $("#header").append(formattedMsg);
 
         $("#topContacts").append(formattedMobile);
         $("#topContacts").append(formattedEmail);
@@ -64,7 +65,7 @@ var education = {
             "name": "Brown University",
             "location": "Providence, Rhode Island",
             "degree": "BA",
-            "majors": "Sociology",
+            "major": "Sociology",
             "dates": "",
             "url": "http://brown.edu"
         },
@@ -118,15 +119,15 @@ var work = {
             "title": "Frontend Developer",
             "location": "San Francisco, CA",
             "dates" : "2012-2014",
-            "description": "Work on cross functional team"
+            "description": "Front-end development for the Federal Reserve Bank of San Francisco's public website"
 
         },
         {
             "employer": "Bay Area Video Coalition",
             "title": "Instructor",
             "location": "San Francisco, CA",
-            "dates" : "",
-            "description": ""
+            "dates" : "2009-2012",
+            "description": "Develop curricula and teach classes for digital media professionals, educators, artists and media makers, independent producers, vocational rehabilitation clients and job seekers. "
         }
 
 
@@ -142,6 +143,10 @@ var work = {
                 var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
                 var formattedEmployerTitle = formattedEmployer + formattedTitle;
                 $(".work-entry:last").append(formattedEmployerTitle);
+
+                var formattedLocation= HTMLworkLocation.replace("%data%", work.jobs[job].location);
+                $(".work-entry:last").append(formattedLocation);
+
 
                 var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
                 $(".work-entry:last").append(formattedDates);
