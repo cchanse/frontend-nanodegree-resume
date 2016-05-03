@@ -1,19 +1,18 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
-
 var bio = {
-    "name" : "Catherine Chanse",
-    "role" : "Frontend Developer",
-    "contacts" : {
+    "name": "Catherine Chanse",
+    "role": "Frontend Developer",
+    "contacts": {
         "mobile": "415-432-0357",
         "email": "cchanse@gmail.com",
-        "github" : "https://github.com/cchanse",
-        "twitter" : "@cchanse",
-        "location" : "XYZ Sacramento Street",
+        "github": "https://github.com/cchanse",
+        "twitter": "@cchanse",
+        "location": "XYZ Sacramento Street",
     },
     "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "skills" : [
+    "skills": [
         "HTML",
         "CSS",
         "JavaScript",
@@ -49,27 +48,28 @@ var bio = {
         $("#header").append(HTMLskillsStart);
 
 
-        if (bio.skills.length > 0 ) {
-            for (skill in bio.skills) {
-                var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-                $("#skills").append(formattedSkill);
+        if (bio.skills.length > 0) {
+            for (var skill in bio.skills) {
+
+                if (bio.skills.hasOwnProperty(skill)) {
+                    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+                    $("#skills").append(formattedSkill);
+                }
             }
         }
     }
-}
+};
 
 
 var education = {
-    "schools" : [
-        {
+    "schools": [{
             "name": "Brown University",
             "location": "Providence, Rhode Island",
             "degree": "BA",
             "major": "Sociology",
             "dates": "",
             "url": "http://brown.edu"
-        },
-        {
+        }, {
             "name": "California State University, East Bay",
             "location": "Hayward, CA",
             "degree": "Masters",
@@ -79,7 +79,7 @@ var education = {
         }
 
     ],
-    "onlineCourses" : [ //onlineCourses: array with - but should this be array containing objects?
+    "onlineCourses": [ //onlineCourses: array with - but should this be array containing objects?
         {
             "title": "Frontend Developer",
             "school": "Udacity",
@@ -90,50 +90,54 @@ var education = {
     "display": function() {
 
         //identify the length of the school array and then go through and replace and append
-        for (school in education.schools) {
-            $("#education").append(HTMLschoolStart);
-            // console.log(education.schools[school].name);
-            var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-            var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-            var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-            // var formattedschoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
+        for (var school in education.schools) {
 
-            $(".education-entry:last").append(formattedschoolName);
-            $(".education-entry:last").append(formattedschoolLocation);
-            $(".education-entry:last").append(formattedschoolDegree);
-            $(".education-entry:last").append(formattedschoolMajor);
-            $(".education-entry:last").append(formattedschoolDates);
-            // $(".education-entry:last").append(formattedschoolUrl);
+            if (education.schools.hasOwnProperty(school)) {
 
-        };
+                $("#education").append(HTMLschoolStart);
+                // console.log(education.schools[school].name);
+                var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+                var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+                var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+                var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+                var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+                // var formattedschoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
+
+                $(".education-entry:last").append(formattedschoolName);
+                $(".education-entry:last").append(formattedschoolLocation);
+                $(".education-entry:last").append(formattedschoolDegree);
+                $(".education-entry:last").append(formattedschoolMajor);
+                $(".education-entry:last").append(formattedschoolDates);
+                // $(".education-entry:last").append(formattedschoolUrl);
+            }
+
+        }
 
     }
-}
+};
 
 var work = {
-    "jobs" : [
-        {
+    "jobs": [{
             "employer": "Federal Reserve Bank of SF",
             "title": "Frontend Developer",
             "location": "San Francisco, CA",
-            "dates" : "2012-2014",
+            "dates": "2012-2014",
             "description": "Front-end development for the Federal Reserve Bank of San Francisco's public website"
 
-        },
-        {
+        }, {
             "employer": "Bay Area Video Coalition",
             "title": "Instructor",
             "location": "San Francisco, CA",
-            "dates" : "2009-2012",
+            "dates": "2009-2012",
             "description": "Develop curricula and teach classes for digital media professionals, educators, artists and media makers, independent producers, vocational rehabilitation clients and job seekers. "
         }
 
 
     ],
     "display": function() {
-            for (job in work.jobs) {
+        for (var job in work.jobs) {
+
+            if (work.jobs.hasOwnProperty(job)) {
 
                 //create new div for work experience
                 $("#workExperience").append(HTMLworkStart);
@@ -144,7 +148,7 @@ var work = {
                 var formattedEmployerTitle = formattedEmployer + formattedTitle;
                 $(".work-entry:last").append(formattedEmployerTitle);
 
-                var formattedLocation= HTMLworkLocation.replace("%data%", work.jobs[job].location);
+                var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
                 $(".work-entry:last").append(formattedLocation);
 
 
@@ -154,55 +158,58 @@ var work = {
                 var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
                 $(".work-entry:last").append(formattedDescription);
             }
+        }
 
     }
-}
+};
 
 var projects = {
-    "projects" : [
-        {
-            "title": "Super Stars Literacy",
-            "dates": "2014",
-            "description": "Redesign through Taproot Project",
-            "images": [
-                    "images/super-stars-literacy.jpg"
-                ]
-        },
-        {
-            "title": "CRA Tool",
-            "dates": "2014",
-            "description": "Used Angular to filter information",
-            "images": [
-                    "images/cra-tool.jpg"
-                ]
-        }
-    ],
-    "display" : function() {
-        for (project in projects.projects) {
+    "projects": [{
+        "title": "Super Stars Literacy",
+        "dates": "2014",
+        "description": "Redesign through Taproot Project",
+        "images": [
+            "images/super-stars-literacy.jpg"
+        ]
+    }, {
+        "title": "CRA Tool",
+        "dates": "2014",
+        "description": "Used Angular to filter information",
+        "images": [
+            "images/cra-tool.jpg"
+        ]
+    }],
+    "display": function() {
+        for (var project in projects.projects) {
 
-            $("#projects").append(HTMLprojectStart);
+            if (projects.projects.hasOwnProperty(project)) {
 
-            var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+                $("#projects").append(HTMLprojectStart);
 
-            var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+                var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 
-            var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+                var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
 
-            $(".project-entry:last").append(formattedTitle);
-            $(".project-entry:last").append(formattedDates);
-            $(".project-entry:last").append(formattedDescription);
+                var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
 
+                $(".project-entry:last").append(formattedTitle);
+                $(".project-entry:last").append(formattedDates);
+                $(".project-entry:last").append(formattedDescription);
 
 
-            if (projects.projects[project].images.length > 0 ) {
-                for (image in projects.projects[project].images) {
-                    var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-                    $(".project-entry:last").append(formattedImage);
+
+                if (projects.projects[project].images.length > 0) {
+                    for (var image in projects.projects[project].images) {
+                        if (projects.projects[project].images.hasOwnProperty(image)) {
+                            var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                            $(".project-entry:last").append(formattedImage);
+                        }
+                    }
                 }
             }
-            }
         }
-}
+    }
+};
 
 
 
