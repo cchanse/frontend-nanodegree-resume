@@ -5,11 +5,11 @@ var bio = {
     "name": "Catherine Chanse",
     "role": "Frontend Developer",
     "contacts": {
-        "mobile": "415-432-0357",
+        "mobile": "650-555-5555",
         "email": "cchanse@gmail.com",
         "github": "https://github.com/cchanse",
         "twitter": "@cchanse",
-        "location": "XYZ Sacramento Street",
+        "location": "San Francisco",
     },
     "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "skills": [
@@ -27,6 +27,7 @@ var bio = {
         var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
         var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+        var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
         var formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
         $("#header").prepend(formattedbioPic);
@@ -46,6 +47,13 @@ var bio = {
         $("#topContacts").append(formattedTwitter);
 
         $("#header").append(HTMLskillsStart);
+
+        $("#footerContacts").append(formattedMobile);
+        $("#footerContacts").append(formattedEmail);
+        $("#footerContacts").append(formattedGithub);
+        $("#footerContacts").append(formattedTwitter);
+        $("#footerContacts").append(formattedTwitter);
+        $("#footerContacts").append(formattedLocation);
 
 
         if (bio.skills.length > 0) {
