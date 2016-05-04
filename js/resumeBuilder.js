@@ -66,15 +66,15 @@ var education = {
             "name": "Brown University",
             "location": "Providence, Rhode Island",
             "degree": "BA",
-            "major": "Sociology",
-            "dates": "",
+            "majors": ["Sociology"],
+            "dates": "1998",
             "url": "http://brown.edu"
         }, {
             "name": "California State University, East Bay",
             "location": "Hayward, CA",
             "degree": "Masters",
-            "major": "Multimedia",
-            "dates": "",
+            "majors": ["Multimedia"],
+            "dates": "2008",
             "url": "www.brown.edu"
         }
 
@@ -83,7 +83,7 @@ var education = {
         {
             "title": "Frontend Developer",
             "school": "Udacity",
-            "date": 2016,
+            "date": "2016",
             "url": "udacity.com"
         }
     ],
@@ -99,7 +99,7 @@ var education = {
                 var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
                 var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
                 var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-                var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+                var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
                 var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
                 // var formattedschoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
 
