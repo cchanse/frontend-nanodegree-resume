@@ -109,14 +109,36 @@ var education = {
                 var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
                 var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
                 var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-                // var formattedschoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
+                var formattedschoolURL = HTMLschoolURL.replace("%data%", education.schools[school].url);
 
                 $(".education-entry:last").append(formattedschoolName);
                 $(".education-entry:last").append(formattedschoolLocation);
                 $(".education-entry:last").append(formattedschoolDegree);
                 $(".education-entry:last").append(formattedschoolMajor);
                 $(".education-entry:last").append(formattedschoolDates);
-                // $(".education-entry:last").append(formattedschoolUrl);
+                // $(".education-entry:last").append(formattedschoolURL);
+            }
+
+        }
+
+
+        //identify the length of the online courses array and then go through and replace and append
+        for (var onlineCourse in education.onlineCourses) {
+
+            if (education.onlineCourses.hasOwnProperty(onlineCourse)) {
+
+                $("#education").append(HTMLonlineClasses);
+                $("#education").append(HTMLonlineschoolStart);
+                // console.log(education.schools[school].name);
+                var formattedHTMLonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+                var formattedHTMLonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+                var formattedHTMLonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].date);
+                var formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+
+                $(".education-entry:last").append(formattedHTMLonlineTitle);
+                $(".education-entry:last").append(formattedHTMLonlineSchool);
+                $(".education-entry:last").append(formattedHTMLonlineDates);
+                $(".education-entry:last").append(formattedHTMLonlineURL);
             }
 
         }
